@@ -1,11 +1,11 @@
 <li class="burgerlist flow-text">
-	{{burger_name}}
-	{{#unless devoured}}
+	{{dataValues.burger_name}}
+	{{#unless dataValues.devoured}}
 	<br>
-	<button class="devbutton red waves-effect waves-light btn left-align" data-id="{{id}}">Eat It</button>
+	<button class="devbutton red waves-effect waves-light btn left-align" data-id="{{dataValues.id}}">Eat It</button>
 	{{/unless}}
-	{{#if devoured}}
+	{{#if dataValues.devoured}}
 	<br>
-	<button class="delbutton red waves-effect waves-light btn left-align" data-id="{{id}}">Delete It</button>
+	<button class="delbutton red waves-effect waves-light btn left-align" data-id="{{dataValues.id}}">Delete It</button>
 	{{/if}}
 </li>

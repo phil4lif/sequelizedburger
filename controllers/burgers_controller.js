@@ -2,21 +2,20 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../models/burger")
+var db = require("../models")
 
 router.get("/", function(req, res){
-    burger.all(function(data){
+    db.Burger.findAll({}).then(function(response){
         var hbsObject = {
-            burgers: data
+            burgers: response
         };
-        console.log(hbsObject);
+        console.log(response);
         res.render("index", hbsObject);
     });
 });
 
 router.post("/api/burgers", function(req, res) {
-    burger.insert(["burger_name", "devoured"], [req.body.name, false]
-    , function(result) {
+    db.Burger.create(req.body).then(function(result) {
         res.json({ id: result.insertID });
     });
 });
@@ -24,7 +23,11 @@ router.delete("/api/burgers/:id", function(req, res){
     var condition = "id = " +req.params.id;
     console.log("condition", condition);
     
-    burger.delete(condition, function(result){
+    db.Burger.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(function(result){
         res.json(result)
     })
 
@@ -33,9 +36,13 @@ router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " +req.params.id;
     console.log("condition", condition);
     
-    burger.update({
+    db.Burger.update({
         devoured: true
-    }, condition, function(result){
+    },{
+        where: {
+            id: req.params.id
+        }
+    }).then(function(result){
         res.json(result)
     });
 });

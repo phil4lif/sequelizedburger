@@ -4,7 +4,7 @@
 <h4>Available Burgers</h4>
 <ul>
     {{#each burgers}}
-        {{#unless devoured}}
+        {{#unless dataValues.devoured}}
             {{> burgers/burger-block devoured=false}}
         {{/unless}}
     {{/each}}
@@ -15,7 +15,7 @@
 
 <ul>
     {{#each burgers}}
-        {{#if devoured}}
+        {{#if dataValues.devoured}}
             {{> burgers/burger-block devoured=true}}
         {{/if}}
     {{/each}}

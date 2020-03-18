@@ -1,26 +1,20 @@
-var orm = require("../config/orm");
+// var orm = require("../config/orm");
+var Sequelize = require("sequelize");
+var sequelize = require("../config/connection.js");
 
-var burger = {
-    all: function(cb) {
-        orm.all("burgers", function(res) {
-            cb(res);
-        });
-    },
-    insert: function(cols, vals, cb) {
-        orm.insert("burgers", cols, vals, function(res) {
-            cb(res);
-        });
-    },
-    update: function(objColVals, condition, cb){
-        orm.update("burgers", objColVals, condition, function(res) {
-            cb(res);
-        });
-    },
-    delete: function(condition, cb){
-        orm.delete("burgers", condition, function(res) {
-            cb(res);
-        })
-    }
-
+module.exports = function (sequelize, DataTypes) {
+    var Burger = sequelize.define("Burger", {
+        burger_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        devoured: {
+            type: DataTypes.BOOLEAN,
+            default: false
+        }
+    });
+    return Burger;
 }
-module.exports = burger;

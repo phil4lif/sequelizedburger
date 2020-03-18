@@ -1,5 +1,17 @@
 var mysql = require("mysql");
+var Sequelize = require("sequelize");
 
+var sequelize = new Sequelize("burgers", "root", "", {
+    host: "localhost",
+    port: 3306,
+    dialect: "mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    }
+});
+module.exports = sequelize;
 var connection;
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);

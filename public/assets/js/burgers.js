@@ -3,7 +3,7 @@ $(function() {
         event.preventDefault();
         console.log("submit")
         var newBurger = {
-            name: $("#bu").val().trim(),
+            burger_name: $("#bu").val().trim(),
             devoured: false
         };
         $.ajax("/api/burgers", {
