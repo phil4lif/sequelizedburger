@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../img/spencer-davis-o_XkavUaGEw-unsplash.jpg");
+}
+
+li {
+    padding:1px;
+}
+.container, header, footer{
+    background-color: rgba(31, 35, 36, 0.836);
+}
+header h1{
+    /* padding:0px; */
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+footer h1 {
+    margin-bottom: 0;
+}
+#bu {
+    background-color: white;
+}
+.newburger {
+    background-color: rgba(31, 35, 36, 0.651);
+}
+h4, h1, li {
+    color: whitesmoke
+}
+.burgerlist {
+    font-size: 24px;
+    margin-top: 10px;
+    border: solid 2px black;
+}
